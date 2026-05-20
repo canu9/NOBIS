@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="tr" data-lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Köprüsüz Yapı — Gönül Nuhoğlu</title>
+<meta name="description" content="Köprüsüz Yapı / Bridgeless Structure — Gönül Nuhoğlu. Mekana özgü artırılmış gerçeklik yerleştirmesi. Edirne Bienali." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,0..100;1,9..144,300..500,0..100&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F1ECE2;
+    --paper-deep: #E8E1D2;
+    --ink: #14171C;
+    --ink-soft: #3A3F47;
+    --ink-faint: #8A847A;
+    --rule: #C9C0AE;
+    --accent: #3B5B7A;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #14171C;
+      --paper-deep: #1A1E25;
+      --ink: #ECE6D8;
+      --ink-soft: #C2BBA9;
+      --ink-faint: #7D7669;
+      --rule: #2E333B;
+      --accent: #9CB3CB;
+    }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Newsreader', Georgia, serif;
+    font-optical-sizing: auto;
+    font-size: 17px;
+    line-height: 1.65;
+    font-weight: 380;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* faint paper grain */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle at 1px 1px, var(--ink-faint) 0.5px, transparent 0.5px);
+    background-size: 3px 3px;
+    opacity: 0.035;
+    z-index: 0;
+  }
+
+  .page {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 36px 28px 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* top bar: artist + venue + lang toggle */
+  .meta-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 14, "SOFT" 0;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 80px;
+  }
+
+  .venue { text-align: right; }
+  .venue span { display: block; }
+  .venue .year { color: var(--ink-faint); font-weight: 400; margin-top: 2px; }
+
+  .lang-toggle {
+    display: inline-flex;
+    gap: 0;
+    background: none;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 4px;
+  }
+
+  .lang-toggle button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px 14px;
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 14, "SOFT" 0;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: var(--ink-faint);
+    transition: color 200ms ease, background 200ms ease;
+  }
+  .lang-toggle button:hover { color: var(--ink); }
+  .lang-toggle button.active {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .toggle-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 56px;
+  }
+
+  /* river line */
+  .river {
+    display: block;
+    width: 100%;
+    height: 18px;
+    margin: 0 0 56px;
+    color: var(--accent);
+    opacity: 0.55;
+  }
+
+  /* title block */
+  .title-block { text-align: center; margin-bottom: 52px; }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144, "SOFT" 100, "wght" 340;
+    font-size: clamp(40px, 9vw, 58px);
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 18px;
+  }
+
+  h1 em {
+    font-style: italic;
+    font-variation-settings: "opsz" 144, "SOFT" 100, "wght" 300;
+    color: var(--accent);
+  }
+
+  .subtitle {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 24, "SOFT" 50, "wght" 380;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+    max-width: 440px;
+    margin: 0 auto 28px;
+  }
+
+  .medium {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 14, "SOFT" 0;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  hr.rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 52px auto;
+    width: 60px;
+  }
+
+  /* body */
+  .body p {
+    margin-bottom: 1.15em;
+    text-wrap: pretty;
+  }
+
+  .body p:first-of-type::first-letter {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144, "SOFT" 100, "wght" 380;
+    font-size: 3.4em;
+    line-height: 0.9;
+    float: left;
+    padding: 0.08em 0.12em 0 0;
+    color: var(--accent);
+  }
+
+  /* footer */
+  footer {
+    margin-top: 72px;
+    padding-top: 28px;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 14, "SOFT" 0;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    line-height: 1.8;
+  }
+  footer .artist { color: var(--ink-soft); }
+
+  /* lang switching */
+  .lang-tr, .lang-en { display: none; }
+  html[data-lang="tr"] .lang-tr { display: block; }
+  html[data-lang="en"] .lang-en { display: block; }
+
+  /* entrance */
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .meta-top { animation: rise 700ms ease-out both; }
+  .toggle-wrap { animation: rise 700ms 80ms ease-out both; }
+  .river { animation: rise 800ms 160ms ease-out both; }
+  .title-block { animation: rise 900ms 240ms ease-out both; }
+  .body { animation: rise 1000ms 360ms ease-out both; }
+
+  @media (max-width: 480px) {
+    .page { padding: 28px 22px 64px; }
+    .meta-top { margin-bottom: 56px; font-size: 10px; }
+    h1 { font-size: clamp(36px, 11vw, 52px); }
+    .subtitle { font-size: 16px; }
+    body { font-size: 16.5px; }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <div class="meta-top">
+      <div class="artist">Gönül Nuhoğlu</div>
+      <div class="venue">
+        <span>Edirne Bienali</span>
+        <span class="year">2026</span>
+      </div>
+    </div>
+
+    <div class="toggle-wrap">
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" data-lang="tr" class="active" aria-pressed="true">TR</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+
+    <!-- river / threshold line -->
+    <svg class="river" viewBox="0 0 600 18" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 9 Q 60 2, 120 9 T 240 9 T 360 9 T 480 9 T 600 9" fill="none" stroke="currentColor" stroke-width="0.8"/>
+    </svg>
+
+    <!-- TR title -->
+    <div class="title-block lang-tr" lang="tr">
+      <h1>Köprüsüz <em>Yapı</em></h1>
+      <p class="subtitle">Sınırın estetiği, hareketin politikası</p>
+      <p class="medium">Mekana Özgü Artırılmış Gerçeklik Yerleştirmesi</p>
+    </div>
+
+    <!-- EN title -->
+    <div class="title-block lang-en" lang="en">
+      <h1>Bridgeless <em>Structure</em></h1>
+      <p class="subtitle">The aesthetics of the border, the politics of movement</p>
+      <p class="medium">Site-Specific Augmented Reality Installation</p>
+    </div>
+
+    <hr class="rule" />
+
+    <!-- TR body -->
+    <div class="body lang-tr" lang="tr">
+      <p>Tunca Nehri üzerinde konumlanan Köprüsüz Yapı, sınırı sabit bir coğrafi çizgi olarak değil; akışkan, görünmez ve veri aracılığıyla işleyen bir durum olarak yeniden kurar.</p>
+
+      <p>Çalışma, nehir üzerinde bilinçli olarak maddesiz bir heykelsel katman inşa eder. Köprüye yerleştirilen optik izleme aygıtı aracılığıyla izleyici, suyun üzerinde beliren hacimsel formlarla karşılaşır. Fiziksel olarak var olmayan bu yapı, yalnızca bakış, perspektif ve aracılanmış algı içinde görünür hale gelir. Bu tercih, çağdaş sınırların giderek görünmez veri akışları, gözetim sistemleri ve algoritmik denetim biçimleri aracılığıyla işleyişine doğrudan referans verir.</p>
+
+      <p>Nehir burada salt bir arkaplan değil; geçiş, ayrışma, göç ve denetim tarihini bünyesinde taşıyan etkin bir coğrafi bedendir. Sürekli akan su ile denetlenen geçiş arasındaki gerilim, çalışmanın kavramsal omurgasını oluşturur.</p>
+
+      <p>Su üzerinde beliren modüler formlar, yinelenen T ve U biçimleri (<em>Territory and Universe</em> — Bölünmüş coğrafya ve Ortak evren) aracılığıyla karşıt mekansal düşüncelere göndermede bulunur. Bu formlar; sınır ile sonsuzluk, ayrışma ile bütünlük, denetim ile birlikte var olma ihtimali arasında salınır.</p>
+
+      <p>Köprüsüz Yapı, bölgesel sınırdan enformasyon sınırına doğru yaşanan dönüşümü araştırır. İzleyicinin karşılaştığı şey bir duvar değil; görünür ama dokunulamaz, mevcut ama aracısız erişilemez bir eşiktir.</p>
+    </div>
+
+    <!-- EN body -->
+    <div class="body lang-en" lang="en">
+      <p>Situated on the Tunca River, Bridgeless Structure reconceptualizes the border not as a fixed territorial line, but as a fluid, invisible, and data-driven condition.</p>
+
+      <p>The work establishes a deliberately immaterial sculptural layer above the river. Through an optical viewing device installed on the bridge, viewers encounter volumetric forms emerging above the water. Physically absent, this structure becomes visible only through perception, perspective, and mediated vision. This intentional immateriality refers to the way contemporary borders increasingly operate through invisible data flows, surveillance systems, and algorithmic mechanisms of control.</p>
+
+      <p>The river is treated not merely as a backdrop, but as an active geographical body carrying histories of passage, separation, migration, and control. The tension between continuous flow and regulated crossing forms the conceptual basis of the work.</p>
+
+      <p>The modular forms emerging above the water reference opposing spatial ideas through the recurring presence of T and U forms (<em>Territory and Universe</em>). These forms oscillate between border and infinity, separation and wholeness, control and the possibility of collective coexistence.</p>
+
+      <p>Bridgeless Structure investigates the transformation from territorial borders to informational borders. What the viewer encounters is not a wall, but a threshold embedded in data, visible yet untouchable, present yet inaccessible without mediation.</p>
+    </div>
+
+    <footer>
+      <div class="artist">Gönül Nuhoğlu</div>
+      <div>Edirne Bienali &middot; 2026</div>
+    </footer>
+
+  </div>
+
+<script>
+  (function () {
+    var html = document.documentElement;
+    var buttons = document.querySelectorAll('.lang-toggle button');
+    function setLang(lang) {
+      html.setAttribute('data-lang', lang);
+      html.setAttribute('lang', lang);
+      buttons.forEach(function (b) {
+        var active = b.getAttribute('data-lang') === lang;
+        b.classList.toggle('active', active);
+        b.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+    }
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () { setLang(b.getAttribute('data-lang')); });
+    });
+    // always default to TR on load
+    setLang('tr');
+  })();
+</script>
+</body>
+</html>
